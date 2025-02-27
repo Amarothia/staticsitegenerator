@@ -21,5 +21,5 @@ class HTMLNode():
     
     def __repr__(self):
         if self.props != None:
-            return f"[Tag: {self.tag}, Value: {self.value}, Children: {self.children}, Props: {self.props_to_html()}]"
-        return f"[Tag: {self.tag}, Value: {self.value}, Children: {self.children}, Props: None]"
+            return f"<{self.tag}{self.props_to_html()}>{self.value}{self.children}</{self.tag}>"
+        return f"<{self.tag}>{self.value}{self.children}</{self.tag}>"
