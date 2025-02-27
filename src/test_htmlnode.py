@@ -20,7 +20,7 @@ class TestHTMLNode(unittest.TestCase):
 
     def test_HTMLNode_print_all_nodes(self):
         nodelist = self.node_list
-        print()
+        # print()
         # print(*nodelist, sep='\n')
 
 if __name__ == "__main__":

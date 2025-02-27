@@ -27,7 +27,7 @@ class TestParentNode(unittest.TestCase):
         title_node = LeafNode('title', "Why Frontend Development Sucks")
         head_node = ParentNode('head', [title_node])
         rootnode = ParentNode('html', [head_node, body_node])
-        print(rootnode.to_html())
+        # print(rootnode.to_html())
 
 
 if __name__ == "__main__":

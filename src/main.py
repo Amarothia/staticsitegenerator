@@ -1,4 +1,8 @@
 from textnode import TextType, TextNode
+from leafnode import LeafNode
+from parentnode import ParentNode
+from textnodetohtmlnode import text_node_to_html_node
+
 
 def main():
     text = "this is a test"

@@ -22,7 +22,7 @@ class TestTextNode(unittest.TestCase):
 
     def test_no_url_noteq(self):
         node = TextNode("This is a text node", TextType.IMAGE)
-        node2 = TextNode("This is a text node", TextType.NORMAL)
+        node2 = TextNode("This is a text node", TextType.TEXT)
         self.assertNotEqual(node, node2)
 
     def test_repr_eq(self):
