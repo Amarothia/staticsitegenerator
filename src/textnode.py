@@ -1,4 +1,5 @@
 from enum import Enum
+import re
 
 class TextType(Enum):
     TEXT = "Normal text"
@@ -22,7 +23,7 @@ class TextNode():
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
 
-def  split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: TextType):
+def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: TextType):
     # This function only handles bold, italics and code. Image and Link will be handled later or in a different function.
     new_nodes = []
 
@@ -47,3 +48,11 @@ def  split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type:
                 new_nodes.append(node)
 
     return new_nodes
+
+def extract_markdown_images(text):
+    return re.findall(r"!\[(.*)\]\((.*)\)(?:\s|$)", text)
+
+def extract_markdown_links(text):
+    return re.findall(r"(?<!!)\[(.*)\]\((.*)\)(?:\s|$)", text)
+
+
