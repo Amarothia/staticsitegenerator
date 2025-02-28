@@ -4,6 +4,9 @@ from parentnode import ParentNode
 from textnodetohtmlnode import text_node_to_html_node
 
 
+def populate_public():
+    
+
 def main():
     text = "this is a test"
     text_type = TextType.BOLD
