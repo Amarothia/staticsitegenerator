@@ -26,4 +26,21 @@ def generate_page(from_path, template_path, dest_path):
         os.makedirs(directory_of_final_html_file)
     with open(dest_path, 'w') as f:
         f.write(revised_html)
-    
+
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    # List all files and directories in the source
+    for item in os.listdir(dir_path_content):
+        print(item)
+        source_path = os.path.join(dir_path_content, item)
+        dest_path = os.path.join(dest_dir_path, item)
+        
+        # If it's a file, copy it
+        if os.path.isfile(source_path):
+            dest_path_correction = dest_path[:-2] + "html"
+            print(f"Converting file to HTML: {source_path} to {dest_path_correction}")
+            generate_page(source_path, template_path, dest_path_correction)
+        # If it's a directory, create it and recursively copy its contents
+        else:
+            print(f"Creating directory: {dest_path}")
+            os.mkdir(dest_path)
+            generate_pages_recursive(source_path, template_path, dest_path)
