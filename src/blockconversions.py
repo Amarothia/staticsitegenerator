@@ -61,8 +61,9 @@ def blocks_to_parent_nodes(blocks: list[str]):
                 parent_nodes.append(ParentNode(f"h{index}", [text_node_to_html_node(node) for node in text_to_textnodes(heading_text)]))
 
             case BlockType.QUOTE:
-                cleaned_quote_text = '\n'.join([line.replace(">", "") for line in text.split("\n") if line.startswith(">")])
-                parent_nodes.append(ParentNode("blockquote", [text_node_to_html_node(node) for node in text_to_textnodes(cleaned_quote_text)]))
+                cleaned_quote_text = ''.join([line.replace(">", "") for line in text.split("\n") if line.startswith(">")])
+                stripped_quote_text = cleaned_quote_text.strip()
+                parent_nodes.append(ParentNode("blockquote", [text_node_to_html_node(node) for node in text_to_textnodes(stripped_quote_text)]))
 
             case BlockType.UNORDERED_LIST:
                 parent_nodes.append(ParentNode("ul", [
