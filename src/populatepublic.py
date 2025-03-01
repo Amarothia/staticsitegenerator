@@ -4,16 +4,16 @@ import os, shutil
 # def populate_public():
 #     shutil.copytree("static", "public", dirs_exist_ok=True)
 
-def populate_public():
+def populate_public(directory):
     # First, remove the public directory if it exists
-    if os.path.exists("public"):
-        shutil.rmtree("public")
+    if os.path.exists(directory):
+        shutil.rmtree(directory)
     
     # Create a fresh public directory
-    os.mkdir("public")
+    os.mkdir(directory)
     
     # Start the recursive copy
-    copy_directory("static", "public")
+    copy_directory("static", directory)
 
 def copy_directory(source, destination):
     # List all files and directories in the source
