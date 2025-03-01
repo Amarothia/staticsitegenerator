@@ -20,7 +20,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
         template_html = f.read()
     html_string = markdown_to_html_node(markdown_text).to_html()
     title = extract_title(markdown_text)
-    revised_html = template_html.replace("{{ Title }}", title).replace("{{ Content }}", html_string).replace("href=\"/", f"href=\"{basepath}").replace("src=\"/", f"src=\"{basepath}")
+    revised_html = template_html.replace("{{ Title }}", title).replace("{{ Content }}", html_string).replace("href=\"/", f"href=\"{basepath}").replace("src=\"/", f"src=\"{basepath}").replace("href=/", f"href={basepath}/").replace("src=/", f"src={basepath}/")
     directory_of_final_html_file = os.path.dirname(dest_path)
     if os.path.exists(directory_of_final_html_file) == False:
         os.makedirs(directory_of_final_html_file)
@@ -37,7 +37,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
         if os.path.isfile(source_path):
             dest_path_correction = dest_path[:-2] + "html"
             generate_page(source_path, template_path, dest_path_correction, basepath)
-            
+
         # If it's a directory, create it and recursively copy its contents
         else:
             print(f"Creating directory: {dest_path}")
